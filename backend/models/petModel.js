@@ -1,13 +1,15 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const petSchema = new mongoose.Schema({
-  fname1: { type: String, require },
-  lname1: { type: String, require },
-  em: { type: String, require, unique: true },
-  pw: { type: String, require },
-  img: { type: String, require },
+  name: { type: String, required: true },
+  species: { type: String, required: true, enum: ["Dog", "Cat", "Other"] },
+  age: { type: Number, required: true, min: 0 },
+  personality: { type: String, required: true },
+  mood: { type: String, default: "Neutral" },
+  adopted: { type: Boolean, default: false },
+  adoption_date: { type: Date, default: null },
 });
 
-const petModel = mongoose.model("pet", petSchema);
+const PetModel = mongoose.model("Pet", petSchema);
 
-module.exports = petModel;
+export default PetModel;
