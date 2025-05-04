@@ -7,15 +7,16 @@ import {
   getOnePet,
   updatePet,
   deletePet,
+  filterPet,
 } from "../controllers/petController.js";
 
 const router = express.Router();
 
 router.post("/create", createPet);
-router.get("/pets", getAllPet);
+router.get("/petsAll", getAllPet);
 router.get("/pet/:id", getOnePet);
 router.put("/pet/:id", updatePet);
-// router.get("/pet/:id", adoptPet);
 router.delete("/pet/:id", deletePet);
+router.get("/filterPet", filterPet);
 
 export default router;

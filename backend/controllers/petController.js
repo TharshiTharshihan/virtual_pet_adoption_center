@@ -77,3 +77,23 @@ export const deletePet = async (req, res) => {
     res.status(500).json({ success: false, message: " error" });
   }
 };
+
+// filter pets by mood
+export const filterPet = async (req, res) => {
+  try {
+    const mood = req.query.mood;
+    if (!mood) {
+      return res
+        .status(400)
+        .json({ message: "Mood query parameter is required" });
+    }
+
+    const pets = await PetModel.find({
+      mood: { $regex: new RegExp(`^${mood}$`, "i") },
+    });
+
+    res.json(pets);
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error });
+  }
+};
