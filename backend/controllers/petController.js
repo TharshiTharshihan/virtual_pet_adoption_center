@@ -1,6 +1,7 @@
 // backend/controllers/petController.js
 import PetModel from "../models/petModel.js";
 
+// Create a new pet
 export const createPet = async (req, res) => {
   const pet = req.body;
 
@@ -19,6 +20,7 @@ export const createPet = async (req, res) => {
   }
 };
 
+// Get all pets
 export const getAllPet = async (req, res) => {
   try {
     const pets = await PetModel.find({});
@@ -29,6 +31,7 @@ export const getAllPet = async (req, res) => {
   }
 };
 
+// Get a single pet by ID
 export const getOnePet = async (req, res) => {
   const { id } = req.params;
 
@@ -46,6 +49,7 @@ export const getOnePet = async (req, res) => {
   }
 };
 
+// Update a pet by ID
 export const updatePet = async (req, res) => {
   const { id } = req.params;
   const pet = req.body;
@@ -61,6 +65,7 @@ export const updatePet = async (req, res) => {
   }
 };
 
+// Delete a pet by ID
 export const deletePet = async (req, res) => {
   const { id } = req.params;
 
